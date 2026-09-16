@@ -1,0 +1,34 @@
+name: weekend-liquidity-trap-detector
+version: 1.0.0
+description: Weekend liquidity analysis to identify pump/dump traps and low-volume manipulation patterns
+author: Hermes Agent
+tags:
+  - liquidity
+  - weekend-trading
+  - volume-analysis
+  - manipulation-detection
+  - risk-management
+
+capabilities:
+  - Volume analysis (weekend vs weekday avg)
+  - Bid-ask spread monitoring
+  - Order book depth tracking
+  - Pump detection algorithm (>5% in <10min on low vol)
+  - Auto-warning system with confidence scoring
+  - Historical weekend pattern database
+
+requirements:
+  - requests
+  - pandas
+  - sqlite3
+  - numpy
+
+triggers:
+  - every_30min: liquidity_check
+  - saturday_morning: weekend_outlook
+  - on_demand: scan_liquidity
+
+outputs:
+  - alerts: pump_detected, spread_widening, volume_anomaly
+  - reports: weekend_liquidity_report.md
+  - database: weekend_liquidity.db

@@ -1,0 +1,35 @@
+name: crypto-catalyst-tracker
+version: 1.0.0
+description: Track upcoming crypto catalysts including upgrades, hard forks, governance votes, and major events
+author: Hermes Agent
+tags:
+  - catalysts
+  - events
+  - upgrades
+  - governance
+  - hard-forks
+  - positioning
+
+capabilities:
+  - Events database (upgrades, hard forks, unlocks, votes)
+  - Timeline view with countdown alerts
+  - Catalyst scoring (High/Med/Low impact)
+  - Pre-event positioning reminders
+  - Historical catalyst performance
+  - Multi-chain event tracking
+
+requirements:
+  - requests
+  - pandas
+  - sqlite3
+  - icalendar (for calendar integration)
+
+triggers:
+  - daily: catalyst_calendar_update
+  - weekly: upcoming_catalysts_report
+  - t_minus_7d: countdown_alert
+
+outputs:
+  - alerts: catalyst_approaching, countdown_7d, countdown_24h
+  - reports: weekly_catalyst_calendar.md
+  - database: crypto_catalysts.db

@@ -1,0 +1,5 @@
+# crypto-price-alerts
+
+Crypto Price Alert System
+
+Monitors BTC, ETH, and altcoin prices with configurable alerts via Telegram/discord/webhook

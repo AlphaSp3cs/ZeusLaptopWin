@@ -1,0 +1,35 @@
+name: zeus-auto-signal-generator
+version: 1.0.0
+description: Automatic signal generation from market scans and analysis, directly populating the Zeus signal queue
+author: Hermes Agent
+tags:
+  - signals
+  - zeus
+  - automation
+  - nlp
+  - execution
+  - market-scan
+
+capabilities:
+  - Parse market scan reports automatically
+  - Auto-generate signals (ticker, direction, entry, stop, targets)
+  - Confidence scoring (sentiment + technicals + on-chain)
+  - Position sizing calculator (Kelly criterion)
+  - Risk/reward filtering (min 2:1 R/R)
+  - Direct signal_queue.db insertion
+
+requirements:
+  - sqlite3
+  - pandas
+  - numpy
+  - spacy (for NLP parsing)
+
+triggers:
+  - on_market_scan: auto_generate_signals
+  - hourly: signal_quality_check
+  - on_demand: parse_report
+
+outputs:
+  - signals: zeus_signal_queue entries
+  - reports: signal_generation_summary.md
+  - database: signal_history.db

@@ -1,0 +1,34 @@
+name: asia-session-sentinel
+version: 1.0.0
+description: Automated monitoring of Asia trading session (10pm-4am EST) for volume spikes and regional news
+author: Hermes Agent
+tags:
+  - asia-session
+  - overnight-trading
+  - volume-spike
+  - regional-news
+  - dip-entry
+
+capabilities:
+  - 10pm-4am EST automated watch
+  - BTC/ETH volume spikes (>50% above avg)
+  - Exchange-specific flows (Binance vs OKX vs Huobi)
+  - China/HK/KR news sentiment parsing
+  - Auto-alerts for Asia-driven moves
+  - Dip entry signal generation
+
+requirements:
+  - requests
+  - pandas
+  - sqlite3
+  - pytz
+
+triggers:
+  - 10pm_est: start_asia_watch
+  - every_30min: volume_check
+  - 4am_est: asia_session_summary
+
+outputs:
+  - alerts: asia_dump, asia_pump, volume_spike
+  - reports: asia_session_summary.md
+  - database: asia_session_data.db

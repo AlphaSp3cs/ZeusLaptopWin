@@ -1,0 +1,10 @@
+config/auth.json
+config/.env
+**/.env
+**/*secret*
+**/*cred*
+**/*key*
+*.pyc
+__pycache__/
+*.db
+*.sqlite3

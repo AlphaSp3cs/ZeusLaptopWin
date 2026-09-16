@@ -1,0 +1,34 @@
+name: gmail-signal-auto-parser
+version: 1.0.0
+description: Automatic parsing of Gmail signals using NLP, extracting trade recommendations and pushing to Zeus
+author: Hermes Agent
+tags:
+  - gmail
+  - signal-parsing
+  - nlp
+  - automation
+  - zeus-integration
+
+capabilities:
+  - Automated Gmail searches (hourly)
+  - NLP parsing of trade recommendations
+  - Extract: ticker, direction, entry, stop, targets
+  - Confidence scoring based on sender reputation
+  - Auto-push to Zeus signal queue
+  - Duplicate detection
+
+requirements:
+  - google-api-python-client
+  - google-auth-oauthlib
+  - spacy
+  - sqlite3
+
+triggers:
+  - hourly: gmail_signal_scan
+  - on_new_email: immediate_parse
+  - on_demand: parse_folder
+
+outputs:
+  - signals: parsed zeus queue entries
+  - reports: signal_parsing_summary.md
+  - database: parsed_signals.db

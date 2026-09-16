@@ -1,0 +1,34 @@
+name: on-chain-intelligence
+version: 1.0.0
+description: Direct on-chain data aggregation from Glassnode and other sources for whale tracking, exchange flows, and sentiment indicators
+author: Hermes Agent
+tags:
+  - crypto
+  - on-chain
+  - glassnode
+  - whale-tracking
+  - exchange-flows
+  - sentiment
+
+capabilities:
+  - Glassnode API integration (free tier)
+  - Exchange netflow tracking (inflows/outflows)
+  - Whale wallet watching (top 100 addresses)
+  - Stablecoin supply ratio monitoring
+  - MVRV Z-Score and NUPL calculation
+  - Auto-alerts for whale movements
+
+requirements:
+  - requests
+  - pandas
+  - sqlite3
+
+triggers:
+  - hourly: exchange_flow_check
+  - daily: whale_wallet_scan
+  - on_demand: full_on_chain_report
+
+outputs:
+  - alerts: whale_movement, exchange_flow_spike, sentiment_extreme
+  - reports: daily_on_chain_summary.md
+  - database: on_chain_data.db

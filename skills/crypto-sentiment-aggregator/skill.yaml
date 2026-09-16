@@ -1,0 +1,35 @@
+name: crypto-sentiment-aggregator
+version: 1.0.0
+description: Aggregate crypto sentiment across multiple sources including news, Twitter, Reddit, and Fear & Greed Index
+author: Hermes Agent
+tags:
+  - sentiment
+  - aggregation
+  - twitter
+  - reddit
+  - fear-greed
+  - news
+
+capabilities:
+  - Integration with Collection Sentinel (CoinDesk, Cointelegraph)
+  - Twitter sentiment (CT influencers)
+  - Reddit r/CryptoCurrency pulse
+  - Fear & Greed Index tracking
+  - Composite sentiment score (-1 to +1)
+  - Sentiment shift alerts
+
+requirements:
+  - requests
+  - pandas
+  - sqlite3
+  - nltk (for sentiment analysis)
+
+triggers:
+  - hourly: sentiment_update
+  - daily: composite_score_report
+  - on_demand: scan_sentiment
+
+outputs:
+  - alerts: sentiment_shift_extreme
+  - reports: daily_sentiment_aggregate.md
+  - database: sentiment_aggregate.db

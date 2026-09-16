@@ -1,0 +1,35 @@
+name: perp-futures-sentinel
+version: 1.0.0
+description: Real-time perpetual futures sentiment monitoring for funding rates, open interest, and liquidation levels
+author: Hermes Agent
+tags:
+  - futures
+  - funding-rates
+  - open-interest
+  - sentiment
+  - liquidations
+  - perps
+
+capabilities:
+  - Funding rate tracking (all major exchanges)
+  - Open interest changes (>20% spike = alert)
+  - Long/short ratio extremes
+  - Liquidation heatmaps
+  - Basis tracking (futures vs spot premium)
+  - Auto-alerts for crowded trades
+
+requirements:
+  - requests
+  - pandas
+  - sqlite3
+  - numpy
+
+triggers:
+  - hourly: funding_rate_check
+  - every_4h: open_interest_scan
+  - on_demand: full_sentiment_report
+
+outputs:
+  - alerts: funding_extreme, oi_spike, liquidation_cluster
+  - reports: perp_sentiment_daily.md
+  - database: perp_futures.db

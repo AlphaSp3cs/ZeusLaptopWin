@@ -1,0 +1,36 @@
+name: trading-risk-dashboard
+version: 1.0.0
+description: Real-time portfolio risk monitoring including exposure, correlation, VaR, and drawdown tracking
+author: Hermes Agent
+tags:
+  - risk-management
+  - portfolio
+  - var
+  - correlation
+  - drawdown
+  - exposure
+
+capabilities:
+  - Total portfolio exposure (% deployed)
+  - Position-level stop calculations
+  - Correlation matrix (BTC/ETH/altcoin)
+  - VaR calculation (95% confidence, 1-day)
+  - Drawdown tracker (max -8% rule enforcement)
+  - Risk odometer (Green/Yellow/Red zones)
+  - Auto-alerts for correlation spikes
+
+requirements:
+  - numpy
+  - pandas
+  - sqlite3
+  - scipy (for VaR)
+
+triggers:
+  - hourly: risk_metrics_update
+  - on_trade: exposure_recalc
+  - daily: full_risk_report
+
+outputs:
+  - alerts: high_correlation, var_breach, drawdown_warning
+  - reports: daily_risk_dashboard.md
+  - database: risk_metrics.db

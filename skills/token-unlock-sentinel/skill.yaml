@@ -1,0 +1,33 @@
+name: token-unlock-sentinel
+version: 1.0.0
+description: Token unlock calendar and supply shock warnings from TokenUnlocks.app
+author: Hermes Agent
+tags:
+  - token-unlocks
+  - supply-shock
+  - tokenomics
+  - warnings
+  - vesting
+
+capabilities:
+  - TokenUnlocks.app API integration
+  - 7-day/30-day/90-day unlock calendar
+  - Supply shock detection (>5% of circulating)
+  - Auto-alerts for upcoming unlocks
+  - Historical unlock performance tracking
+  - Token-specific unlock profiles
+
+requirements:
+  - requests
+  - pandas
+  - sqlite3
+
+triggers:
+  - daily: unlock_calendar_check
+  - weekly: supply_shock_forecast
+  - on_demand: scan_token
+
+outputs:
+  - alerts: upcoming_unlock, supply_shock_warning
+  - reports: weekly_unlock_calendar.md
+  - database: token_unlocks.db

@@ -1,0 +1,34 @@
+name: defi-yield-hunter
+version: 1.0.0
+description: DeFi TVL and yield tracker using DeFiLlama API for identifying yield opportunities and governance events
+author: Hermes Agent
+tags:
+  - defi
+  - yield-farming
+  - tvl
+  - defillama
+  - governance
+  - token-unlocks
+
+capabilities:
+  - DeFiLlama API integration (all chains)
+  - TVL change alerts (>10% weekly shift)
+  - Yield farming opportunities (APY >20%)
+  - Governance token alerts (upcoming votes)
+  - Token unlock calendar integration
+  - Auto-ranking of top yield opportunities
+
+requirements:
+  - requests
+  - pandas
+  - sqlite3
+
+triggers:
+  - daily: tvl_scan
+  - weekly: yield_opportunity_report
+  - on_demand: scan_chain
+
+outputs:
+  - alerts: tvl_spike, high_yield, governance_vote
+  - reports: weekly_yield_opportunities.md
+  - database: defi_yields.db
